@@ -1,7 +1,12 @@
+import './Navbar.css';
+
 const Navbar = () =>{
     return(
-        <nav>
-            PokeApi
+        <nav className="nav">
+            <img
+                alt="Logo da PokeApi"
+                src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png"
+            />
         </nav>
 
     )
