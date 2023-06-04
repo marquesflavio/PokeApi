@@ -4,7 +4,7 @@ import './SearchBar.css';
 const SearchBar = () =>{
     const [search, setSearch] = useState ("");
 
-    const pokemonPesquisado = (e: any) =>{
+    const searchPokemon = (e: any) =>{
         setSearch(e.target.value)
 
     };
@@ -18,7 +18,7 @@ const SearchBar = () =>{
             <input 
                 autoFocus value={search} 
                 placeholder="Procurar pokémons" 
-                onChange={pokemonPesquisado}>    
+                onChange={searchPokemon}>    
             </input>
         
             <button onClick={onButtonClick}>Pesquisar</button>
