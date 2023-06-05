@@ -6,10 +6,11 @@ const SearchBar = () =>{
 
     const searchPokemon = (e: any) =>{
         setSearch(e.target.value)
-
+        
     };
 
     const onButtonClick = () =>{
+
         console.log(search)
     }
 
