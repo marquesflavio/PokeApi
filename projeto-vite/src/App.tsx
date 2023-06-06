@@ -2,9 +2,15 @@ import { useEffect, useState } from 'react'
 import Navbar from './components/Navbar/Navbar'
 import SearchBar from './components/SearchBar/SearchBar'
 import axios from 'axios'
+import '../App.css'
 
 function App() {
-  const [pokemons, setPokemons] = useState ([])
+
+  interface Pokemon {
+    name: string;
+  }
+
+  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
 
   useEffect(()=> {
     axios
@@ -16,15 +22,15 @@ function App() {
   }, []);
 
   
-  <ul>
-    {pokemons && pokemons.map((pokemon) => <li key={pokemon}>{pokemon}</li>)}
-  </ul>
-  
-  
   return (
     <>
       <Navbar/>
       <SearchBar/>
+      <div className='lista-pokemon'>
+        <ul>
+          {pokemons && pokemons.map((pokemon) => <li key={pokemon.name}>{pokemon.name}</li>)}
+        </ul>
+      </div>
     </>
   );
 }
