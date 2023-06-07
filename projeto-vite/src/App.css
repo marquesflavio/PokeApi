@@ -1,0 +1,22 @@
+.lista-pokemon{
+    font-family: 'Alata';
+    text-transform: capitalize;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.lista-pokemon ul{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+.lista-pokemon li{
+    list-style: none;
+    width: 150px;
+    height: 150px;
+    border: 1px solid rgb(0, 0, 0);
+    text-align: center;
+}
