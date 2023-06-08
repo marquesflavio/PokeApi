@@ -21,6 +21,12 @@ function App() {
       .catch((err) => {console.log(err)})
       
   }, []);
+
+  // useEffect(()=>{
+  //   axios
+  //     .get('https://pokeapi.glitch.me/v1')
+  //     .then((res) => console.log(res))
+  // },[])
    
   return (
     <>
