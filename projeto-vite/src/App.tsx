@@ -3,7 +3,7 @@ import Navbar from './components/Navbar/Navbar'
 import SearchBar from './components/SearchBar/SearchBar'
 import axios from 'axios'
 import './App.css'
-
+2
 function App() {
 
   interface Pokemon {
