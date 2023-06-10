@@ -8,33 +8,42 @@ function App() {
 
   interface Pokemon {
     name: string;
-    imagem: string;
+    sprites: {
+      front_default: string;
+    }
   }
 
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
 
   useEffect(()=> {
     axios
-      .get('https://pokeapi.co/api/v2/pokemon?limit=151')
+      .get('https://pokeapi.co/api/v2/pokemon/54/')
       //useEffect com o axios.get retorna uma Promise, ou seja, podemos usar async/await ou then/catch
-      .then((res) => setPokemons(res.data.results))
-      .catch((err) => {console.log(err)})
-      
+      .then((res) => {
+        const data = res.data;
+        const pokemon: Pokemon = {
+          name: data.name,
+          sprites: data.sprites
+        };
+      setPokemons([pokemon]);
+      })
+      // nome do pokemon tá em data.name
+      //imagem está em data.sprites.front_default
+      .catch((err) => {console.log(err)})  
   }, []);
 
-  // useEffect(()=>{
-  //   axios
-  //     .get('https://pokeapi.glitch.me/v1')
-  //     .then((res) => console.log(res))
-  // },[])
-   
+  
   return (
     <>
       <Navbar/>
       <SearchBar/>
       <div className='lista-pokemon'>
         <ul>
-          {pokemons && pokemons.map((pokemon) => <li key={pokemon.name}><p>{pokemon.name}</p><img src={pokemon.imagem}/></li>)}
+          {pokemons.map((pokemon) =>
+            <li key={pokemon.name}>
+              <p>{pokemon.name}</p>
+              <img src={pokemon.sprites.front_default} alt={pokemon.name}/>
+            </li>)}
         </ul>
       </div>
     </>
