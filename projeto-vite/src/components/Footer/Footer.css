@@ -1,0 +1,17 @@
+.footer{
+    background-color: #cecece;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer a{
+    text-decoration: none;
+    color: black;
+}
+.footer a:hover{
+    text-decoration: underline;
+    color: blue;
+}

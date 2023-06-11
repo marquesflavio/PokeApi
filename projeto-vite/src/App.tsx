@@ -3,6 +3,7 @@ import Navbar from './components/Navbar/Navbar'
 import SearchBar from './components/SearchBar/SearchBar'
 import axios from 'axios'
 import './App.css'
+import Footer from './components/Footer/Footer'
 2
 function App() {
 
@@ -15,23 +16,36 @@ function App() {
 
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
 
-  useEffect(()=> {
-    axios
-      .get('https://pokeapi.co/api/v2/pokemon/54/')
-      //useEffect com o axios.get retorna uma Promise, ou seja, podemos usar async/await ou then/catch
-      .then((res) => {
-        const data = res.data;
-        const pokemon: Pokemon = {
-          name: data.name,
-          sprites: data.sprites
-        };
-      setPokemons([pokemon]);
-      })
-      // nome do pokemon tá em data.name
-      //imagem está em data.sprites.front_default
-      .catch((err) => {console.log(err)})  
-  }, []);
+  
+ //useEffect com o axios.get retorna uma Promise, ou seja, podemos usar async/await ou then/catch 
+ // nome do pokemon tá em data.name
+ //imagem está em data.sprites.front_default
+ 
 
+  useEffect(() => {
+    const fetchPokemons = async () => {
+      const promises = Array.from({ length: 151 }, (_, index) =>
+        axios.get(`https://pokeapi.co/api/v2/pokemon/${index + 1}/`)
+      );
+
+      try {
+        const responses = await Promise.all(promises);
+        const fetchedPokemons = responses.map((res) => {
+          const data = res.data;
+          const pokemon: Pokemon = {
+            name: data.name,
+            sprites: data.sprites
+          };
+          return pokemon;
+        });
+        setPokemons(fetchedPokemons);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchPokemons();
+  }, []);
   
   return (
     <>
@@ -46,6 +60,7 @@ function App() {
             </li>)}
         </ul>
       </div>
+      <Footer />
     </>
   );
 }
