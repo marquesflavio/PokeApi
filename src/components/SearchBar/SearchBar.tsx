@@ -1,28 +1,9 @@
-import { useState } from "react";
 import './SearchBar.css';
 
 const SearchBar = () =>{
-    const [search, setSearch] = useState ("");
-
-    const searchPokemon = (e: any) =>{
-        setSearch(e.target.value)
-        
-    };
-
-    const onButtonClick = () =>{
-
-        console.log(search)
-    }
-
     return(
         <div className="searchbar">
-            <input 
-                autoFocus value={search} 
-                placeholder="Procurar pokémons" 
-                onChange={searchPokemon}>    
-            </input>
-        
-            <button onClick={onButtonClick}>Pesquisar</button>
+            <p>Este projeto tem como inteção a prática com API, logo, o resultado apresentado (Pokemóns) tem no back end, uma requisição funcional de um fetch utilizando o verbo GET.</p>
         </div>
 
     )
